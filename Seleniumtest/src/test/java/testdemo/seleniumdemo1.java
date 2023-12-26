@@ -1,4 +1,6 @@
 package testdemo;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,18 +41,29 @@ public class seleniumdemo1 {
 				 //submit button  
 				 driver3.findElement(By.id("login-button")).click();
 				 
-			String Title= driver3.getTitle();
-			String acttitle="SWAGLABS";	 
+//			String Title= driver3.getTitle();
+//			String acttitle="SWAGLABS";	 
+//			
+//			 if(acttitle.equals(Title))
+//			 {
+//				 System.out.println("test passed");   // Test case for validating page title
+//			 }
+//			 else
+//			 {
+//				 System.out.println("failed");
+//			 }
+				 
+			List<WebElement> inventory = driver3.findElements(By.className("inventory_list"));
 			
-			 if(acttitle.equals(Title))
-			 {
-				 System.out.println("test passed");   // Test case for validating page title
-			 }
-			 else
-			 {
-				 System.out.println("failed");
-			 }
-			 
+			System.out.println("Inventory List size:-"+inventory.size()); // counts of Inventory lists
+			
+			List<WebElement> images= driver3.findElements(By.className("inventory_item_img"));
+			System.out.println("Images count:-"+images.size()); // counts of Images
+			
+			List<WebElement> links =driver3.findElements(By.tagName("a"));	 
+			System.out.println("Total links:-"+links.size());  // count of total links
+			
+			
 			 driver3.quit(); // closing the Test case
 			}
 
