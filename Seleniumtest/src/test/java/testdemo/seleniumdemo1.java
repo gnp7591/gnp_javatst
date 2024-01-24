@@ -63,6 +63,9 @@ public class seleniumdemo1 {
 			List<WebElement> links =driver3.findElements(By.tagName("a"));	 
 			System.out.println("Total links:-"+links.size());  // count of total links
 			
+			// Examples of System Locators above
+			
+			
 			
 			 driver3.quit(); // closing the Test case
 			}
