@@ -1,6 +1,7 @@
 package testdemo;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
 import org.testng.Assert;
 import org.openqa.selenium.By;
@@ -19,7 +20,8 @@ public class CssSelectorDemo {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-
+		String actusername= "standard_user";
+		String Actpasswd="secret_sauce";
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver4 = new ChromeDriver();
 		// launch saucedemo site
@@ -35,20 +37,24 @@ public class CssSelectorDemo {
 		//username capturing
 	WebElement txtusername	= driver4.findElement(By.name("user-name"));
 		 txtusername.sendKeys("standard_user");
-		
+		Assert.assertEquals(actusername, txtusername);
 		//password capturing
-		 driver4.findElement(By.name("password")).sendKeys("secret_sauce");
-		 
+		WebElement Exppwd = driver4.findElement(By.name("password"));
+		Exppwd.sendKeys("secret_sauce");
+		
+		Assert.assertEquals(Actpasswd, Exppwd); // validation for username and password
 		 //submit button  
 		 driver4 .findElement(By.id("login-button")).click();
 		 
-		 WebElement xe5 = mywait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Open Menu']")));
-		 xe5.click();
-		 System.out.println("Menu Opened");
-		 
+			/*
+			 * WebElement xe5 =
+			 * mywait.until(ExpectedConditions.visibilityOfElementLocated(By.
+			 * xpath("//button[normalize-space()='Open Menu']"))); xe5.click();
+			 * System.out.println("Menu Opened");
+			 */
 		 Thread.sleep(200);
-		  WebElement invopt = driver4.findElement(By.xpath("//a[@id='inventory_sidebar_link']"));
-		  System.out.println("Element Displayed"+invopt.isDisplayed());
+		 List <WebElement> invopt = driver4.findElements(By.xpath("(//button[normalize-space()='Open Menu'])[1]"));
+		  System.out.println("Element Displayed"+invopt.get(1));
 		  
 		  
 			/* System.out.println("Navigation options"+invopt.size()); */
@@ -87,7 +93,8 @@ public class CssSelectorDemo {
 		Assert.assertTrue(true);
 		
 		
-		
+		VerifyError var3 = new VerifyError("error in test");
+		var3.printStackTrace();
 		//	driver4.quit();
 		
 		
