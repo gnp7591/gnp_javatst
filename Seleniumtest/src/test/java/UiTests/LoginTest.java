@@ -1,6 +1,7 @@
 package UiTests;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,12 +12,14 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
+import Base.AllureReportListener;
 
 import Base.DriverFactory;
 import Base.LoginPage;
 import Base.UiBaseClass;
 import Base.ConfigReader;
 
+@Listeners(AllureReportListener.class)
 @Feature("Login Functionality")
 @Story("User Login Scenarios")
 public class LoginTest extends UiBaseClass {
