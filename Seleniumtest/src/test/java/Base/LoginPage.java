@@ -14,9 +14,21 @@ public class LoginPage {
     }
 
     public void login(String username, String password) {
-        driver.findElement(usernameField).sendKeys("standard_user");
-        driver.findElement(passwordField).sendKeys("secret_sauce");
+        driver.findElement(usernameField).sendKeys(username);
+        driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
+    }
+
+    public String getErrorMessage() {
+        return driver.findElement(By.cssSelector("[data-test='error']")).getText();
+    }
+
+    public boolean isErrorMessageDisplayed() {
+        try {
+            return driver.findElement(By.cssSelector("[data-test='error']")).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
