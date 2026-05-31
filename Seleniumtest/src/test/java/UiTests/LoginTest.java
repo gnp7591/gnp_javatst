@@ -1,6 +1,7 @@
 package UiTests;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,11 +12,14 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.qameta.allure.Feature;
+import Base.AllureReportListener;
 
 import Base.DriverFactory;
 import Base.LoginPage;
 import Base.UiBaseClass;
+import Base.ConfigReader;
 
+@Listeners(AllureReportListener.class)
 @Feature("Login Functionality")
 @Story("User Login Scenarios")
 public class LoginTest extends UiBaseClass {
@@ -24,19 +28,19 @@ public class LoginTest extends UiBaseClass {
     @Severity(SeverityLevel.BLOCKER)
     @Description("This test verifies that a user can successfully log in with valid credentials.")
     public void testValidLogin() {
-        DriverFactory.getDriver().get("https://www.saucedemo.com/");
+        DriverFactory.getDriver().get(ConfigReader.getApplicationUrl());
         LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(ConfigReader.getValidUsername(), ConfigReader.getValidPassword());
         //Assertion here.
-        Assert.assertEquals(DriverFactory.getDriver().getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
+        Assert.assertEquals(DriverFactory.getDriver().getCurrentUrl(), ConfigReader.getInventoryUrl());
     }
     @Test(description = "Verify that user cannot login with invalid credentials")
     @Severity(SeverityLevel.CRITICAL)
     @Description("This test verifies that a user cannot log in with invalid credentials.")
     public void testInvalidLogin() {
-        DriverFactory.getDriver().get("https://www.saucedemo.com/");
+        DriverFactory.getDriver().get(ConfigReader.getApplicationUrl());
         LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-        loginPage.login("invalid_user", "invalid_password");
+        loginPage.login(ConfigReader.getInvalidUsername(), ConfigReader.getInvalidPassword());
         
         // Wait for error message to appear (up to 10 seconds)
         WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
@@ -56,9 +60,9 @@ public class LoginTest extends UiBaseClass {
     @Severity(SeverityLevel.NORMAL)
     @Description("This test verifies that a user cannot log in with empty credentials.")
     public void testLoginWithEmptyCredentials() {
-        DriverFactory.getDriver().get("https://www.saucedemo.com/");
+        DriverFactory.getDriver().get(ConfigReader.getApplicationUrl());
         LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-        loginPage.login("", "");
+        loginPage.login(ConfigReader.getEmptyUsername(), ConfigReader.getEmptyPassword());
         
         WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
         By errorLocator = By.cssSelector("[data-test='error']");
@@ -76,9 +80,9 @@ public class LoginTest extends UiBaseClass {
     @Severity(SeverityLevel.NORMAL)
     @Description("This test verifies that a user cannot log in with an invalid username and valid password.")
     public void testInvalidUsernameValidPassword() {
-        DriverFactory.getDriver().get("https://www.saucedemo.com/");
+        DriverFactory.getDriver().get(ConfigReader.getApplicationUrl());
         LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-        loginPage.login("invalid_user", "secret_sauce");
+        loginPage.login(ConfigReader.getInvalidUsername(), ConfigReader.getValidPassword());
         
         WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
         By errorLocator = By.cssSelector("[data-test='error']");
