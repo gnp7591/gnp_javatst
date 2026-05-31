@@ -1,86 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="UI_Tests_Suite" parallel="tests" thread-count="3">
-  <description>Comprehensive UI Test Suite for Selenium Test Application</description>
+<suite name="UI_Tests_Grouped" parallel="tests" thread-count="3">
+  <description>UI tests grouped by feature with selective execution options</description>
   
   <listeners>
     <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     <listener class-name="Base.AllureReportListener"/>
   </listeners>
 
-  <!-- Login and Authentication Tests -->
-  <test thread-count="1" name="Login Tests" preserve-order="true">
-    <description>Login functionality and authentication tests</description>
+  <!-- Critical Tests: Login + Navigation -->
+  <test thread-count="1" name="Critical Tests" preserve-order="true">
+    <description>Critical functionality tests - Login and Navigation</description>
     <classes>
       <class name="UiTests.LoginTest"/>
-    </classes>
-  </test> <!-- Login Tests -->
-
-  <!-- Navigation Tests -->
-  <test thread-count="1" name="Navigation Tests" preserve-order="true">
-    <description>Navigation menu and page navigation tests</description>
-    <classes>
       <class name="UiTests.NavigationTest"/>
     </classes>
-  </test> <!-- Navigation Tests -->
+  </test>
 
-  <!-- All Items Page Tests -->
-  <test thread-count="2" name="All Items Tests" preserve-order="true">
-    <description>Comprehensive tests for the All Items page including product display, sorting, filtering, and cart operations</description>
+  <!-- Core Functionality: Product Display and Sorting -->
+  <test thread-count="2" name="Product Display and Sorting">
+    <description>Tests for product display, count, sorting functionality</description>
+    <groups>
+      <run>
+        <exclude name="cartTests"/>
+      </run>
+    </groups>
     <classes>
       <class name="UiTests.AllItemsTest">
-        <!-- Page Load and Display Tests -->
         <methods>
           <include name="testAllItemsPageLoads"/>
           <include name="testAllItemsDisplay"/>
           <include name="testProductCount"/>
-        </methods>
-      </class>
-      <class name="UiTests.AllItemsTest">
-        <!-- Product Information Tests -->
-        <methods>
           <include name="testProductNamesDisplay"/>
           <include name="testProductPricesDisplay"/>
           <include name="testProductPricesFormatValid"/>
           <include name="testProductDescriptionsDisplay"/>
-        </methods>
-      </class>
-      <class name="UiTests.AllItemsTest">
-        <!-- Sorting Tests -->
-        <methods>
           <include name="testSortByPriceLowToHigh"/>
           <include name="testSortByPriceHighToLow"/>
           <include name="testSortByNameAZ"/>
           <include name="testSortByNameZA"/>
+          <include name="testClickProductNavigates"/>
         </methods>
       </class>
+    </classes>
+  </test>
+
+  <!-- Cart Operations Tests -->
+  <test thread-count="2" name="Cart Operations">
+    <description>Tests for adding, removing products and cart badge functionality</description>
+    <classes>
       <class name="UiTests.AllItemsTest">
-        <!-- Add to Cart Tests -->
         <methods>
           <include name="testAddProductToCart"/>
           <include name="testAddMultipleProductsToCart"/>
           <include name="testAddProductToCartByName"/>
           <include name="testButtonTextChangesAfterAddToCart"/>
-        </methods>
-      </class>
-      <class name="UiTests.AllItemsTest">
-        <!-- Remove from Cart Tests -->
-        <methods>
           <include name="testRemoveProductFromCart"/>
           <include name="testRemoveProductFromCartByName"/>
           <include name="testButtonTextChangesAfterRemoveFromCart"/>
-        </methods>
-      </class>
-      <class name="UiTests.AllItemsTest">
-        <!-- Cart Badge and Product Click Tests -->
-        <methods>
           <include name="testCartBadgeDisplaysCorrectCount"/>
           <include name="testCartBadgeHiddenWhenEmpty"/>
           <include name="testCartBadgeDisplayedWhenItemsAdded"/>
-          <include name="testClickProductNavigates"/>
         </methods>
       </class>
     </classes>
-  </test> <!-- All Items Tests -->
+  </test>
 
-</suite> <!-- UI_Tests_Suite -->
+</suite> <!-- UI_Tests_Grouped -->

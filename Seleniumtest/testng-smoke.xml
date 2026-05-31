@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smoke_Tests" parallel="false" thread-count="1">
+  <description>Quick smoke tests for basic functionality verification</description>
+  
+  <listeners>
+    <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    <listener class-name="Base.AllureReportListener"/>
+  </listeners>
+
+  <!-- Smoke Tests: Essential functionality -->
+  <test thread-count="1" name="Smoke Tests">
+    <description>Essential smoke tests to verify basic application functionality</description>
+    <classes>
+      <class name="UiTests.LoginTest"/>
+      <class name="UiTests.NavigationTest"/>
+      <class name="UiTests.AllItemsTest">
+        <methods>
+          <include name="testAllItemsPageLoads"/>
+          <include name="testAllItemsDisplay"/>
+          <include name="testProductCount"/>
+          <include name="testAddProductToCart"/>
+          <include name="testRemoveProductFromCart"/>
+          <include name="testCartBadgeDisplaysCorrectCount"/>
+        </methods>
+      </class>
+    </classes>
+  </test>
+
+</suite> <!-- Smoke_Tests -->

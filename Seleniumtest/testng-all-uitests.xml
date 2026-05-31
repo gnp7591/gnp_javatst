@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="All_UI_Tests" parallel="tests" thread-count="3">
+  <description>Run all UI tests from UiTests package in parallel</description>
+  
+  <listeners>
+    <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    <listener class-name="Base.AllureReportListener"/>
+  </listeners>
+
+  <!-- All UiTests package tests -->
+  <test thread-count="3" name="All UI Tests" preserve-order="false">
+    <description>All tests from UiTests package</description>
+    <packages>
+      <package name="UiTests"/>
+    </packages>
+  </test> <!-- All UI Tests -->
+
+</suite> <!-- All_UI_Tests -->
