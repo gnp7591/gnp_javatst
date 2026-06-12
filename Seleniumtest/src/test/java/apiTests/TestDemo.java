@@ -3,13 +3,14 @@ package apiTests;
 import java.util.List;
 import java.util.Map;
 
+import groovy.util.logging.Slf4j;
 import org.testng.Assert;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-
+@Slf4j
 public class TestDemo {
 	
 	
