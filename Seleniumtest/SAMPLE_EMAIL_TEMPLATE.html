@@ -1,0 +1,336 @@
+From: n8n-test-automation@internal.company.com
+To: gnpuranik479@gmail.com
+Date: Wed, Jun 12, 2026 9:41 PM IST
+Subject: ❌ Test Automation Report | 9/14 Passed (64%) - ATTENTION REQUIRED
+
+---
+
+[EMAIL BODY - HTML FORMAT]
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .header { background: #ff6b6b; color: white; padding: 20px; border-radius: 5px; }
+        .summary { background: #fff3cd; padding: 15px; margin: 20px 0; border-left: 4px solid #ffc107; }
+        .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 20px 0; }
+        .metric-box { background: #f5f5f5; padding: 15px; border-radius: 5px; text-align: center; }
+        .passed { color: #28a745; font-weight: bold; }
+        .failed { color: #dc3545; font-weight: bold; }
+        .table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .table th { background: #333; color: white; padding: 10px; text-align: left; }
+        .table td { padding: 10px; border-bottom: 1px solid #ddd; }
+        .table tr:nth-child(even) { background: #f9f9f9; }
+        .button { display: inline-block; background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 10px 0; }
+        .footer { color: #666; font-size: 12px; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px; }
+        .trend { font-size: 16px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>⚠️ TEST AUTOMATION REPORT</h1>
+    <p style="margin: 5px 0;"><strong>Status:</strong> FAILED</p>
+    <p style="margin: 5px 0;"><strong>Date:</strong> June 12, 2026 at 9:41 PM (IST)</p>
+</div>
+
+<div class="summary">
+    <h2>🚨 CRITICAL ALERT</h2>
+    <p><strong>Test suite execution shows degradation!</strong></p>
+    <ul>
+        <li>Pass rate dropped from 78.6% (yesterday) to 64.3% (today)</li>
+        <li>3 NEW failures detected in cart functionality</li>
+        <li>2 recurring failures in navigation features</li>
+        <li><strong>Recommended Action:</strong> Investigate cart module changes immediately</li>
+    </ul>
+</div>
+
+<h2>📊 EXECUTION SUMMARY</h2>
+
+<div class="metrics">
+    <div class="metric-box">
+        <div style="font-size: 24px;"><span class="failed">❌ 5</span></div>
+        <div style="font-size: 12px; color: #666;">Failed Tests</div>
+    </div>
+    <div class="metric-box">
+        <div style="font-size: 24px;"><span class="passed">✅ 9</span></div>
+        <div style="font-size: 12px; color: #666;">Passed Tests</div>
+    </div>
+    <div class="metric-box">
+        <div style="font-size: 24px;">14</div>
+        <div style="font-size: 12px; color: #666;">Total Tests</div>
+    </div>
+    <div class="metric-box">
+        <div style="font-size: 24px; color: #ff6b6b;">64.3%</div>
+        <div style="font-size: 12px; color: #666;">Pass Rate ↓</div>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Metric</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td><strong>Suite</strong></td>
+        <td>testng-smoke.xml</td>
+    </tr>
+    <tr>
+        <td><strong>Environment</strong></td>
+        <td>Local Chrome 149.0.7827.103</td>
+    </tr>
+    <tr>
+        <td><strong>Duration</strong></td>
+        <td>45.63 seconds</td>
+    </tr>
+    <tr>
+        <td><strong>Execution Started</strong></td>
+        <td>2026-06-12 21:40:06 UTC+5:30</td>
+    </tr>
+    <tr>
+        <td><strong>Report Generated</strong></td>
+        <td>2026-06-12 21:41:33 UTC+5:30</td>
+    </tr>
+</table>
+
+---
+
+<h2>❌ FAILED TESTS (5 Critical Issues)</h2>
+
+<table class="table">
+    <tr>
+        <th>Test Name</th>
+        <th>Component</th>
+        <th>Error</th>
+        <th>Severity</th>
+    </tr>
+    <tr>
+        <td><strong>Verify cart badge displays correct count</strong></td>
+        <td>Cart Badge</td>
+        <td>Assertion failed: expected [true] but found [false]</td>
+        <td style="color: #ff9800;">HIGH</td>
+    </tr>
+    <tr>
+        <td><strong>Verify adding single product to cart</strong></td>
+        <td>Add to Cart</td>
+        <td>Product addition assertion failed</td>
+        <td style="color: #dc3545;"><strong>CRITICAL</strong></td>
+    </tr>
+    <tr>
+        <td><strong>Verify removing product from cart</strong></td>
+        <td>Remove from Cart</td>
+        <td>Product removal assertion failed</td>
+        <td style="color: #dc3545;"><strong>CRITICAL</strong></td>
+    </tr>
+    <tr>
+        <td><strong>Verify user can navigate to About page</strong></td>
+        <td>Navigation</td>
+        <td>Navigation assertion failed (Line 65)</td>
+        <td style="color: #ffc107;">MEDIUM</td>
+    </tr>
+    <tr>
+        <td><strong>Verify user can logout</strong></td>
+        <td>Authentication</td>
+        <td>Expected URL [https://www.saucedemo.com/] but got [https://www.saucedemo.com/inventory.html]</td>
+        <td style="color: #ffc107;">MEDIUM</td>
+    </tr>
+</table>
+
+---
+
+<h2>🔍 ROOT CAUSE ANALYSIS</h2>
+
+<h3>🛒 CART FUNCTIONALITY - CRITICAL (3 Failures)</h3>
+<p><strong>Issue:</strong> Multiple cart operations failing (add, remove, badge update)</p>
+<p><strong>Root Cause Hypothesis:</strong> Recent changes to cart service or state management</p>
+<p><strong>Files Affected:</strong>
+<ul>
+    <li><code>UiTests/AllItemsTest.java</code></li>
+    <li>Likely: <code>src/main/java/Cart/CartService.java</code> (recent changes?)</li>
+</ul>
+</p>
+<p><strong>Immediate Actions:</strong></p>
+<ol>
+    <li>Review recent commits to cart module (last 24 hours)</li>
+    <li>Check cart state management logic</li>
+    <li>Verify cart service mock data is correct</li>
+    <li>Add debug logging to cart add/remove operations</li>
+</ol>
+
+<h3>🔗 NAVIGATION - MEDIUM (2 Failures)</h3>
+<p><strong>Issues:</strong></p>
+<ul>
+    <li><strong>About Page:</strong> Navigation not working (assertion at NavigationTest.java:65)</li>
+    <li><strong>Logout:</strong> Redirect going to inventory.html instead of home page</li>
+</ul>
+<p><strong>Recommended Fix:</strong></p>
+<ol>
+    <li>Verify About page exists in current codebase</li>
+    <li>Fix logout redirect configuration</li>
+    <li>Check for any recent UI refactoring</li>
+</ol>
+
+<h3>⚠️ ENVIRONMENT ISSUE - DevTools Mismatch</h3>
+<p><strong>Warning:</strong> Chrome 149 detected but DevTools v128 configured</p>
+<p><strong>Fix:</strong> Add to pom.xml:
+<pre style="background: #f5f5f5; padding: 10px; border-radius: 3px;">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+    &lt;artifactId&gt;selenium-devtools-v149&lt;/artifactId&gt;
+    &lt;version&gt;4.25.0&lt;/version&gt;
+&lt;/dependency&gt;
+</pre>
+</p>
+
+---
+
+<h2>📈 TREND ANALYSIS</h2>
+
+<div class="trend">
+    <strong>7-Day Pass Rate Trend:</strong>
+    <ul>
+        <li>June 6:  100% 📈</li>
+        <li>June 7:  95.5% 📈</li>
+        <li>June 8:  92.3% ➡️</li>
+        <li>June 9:  98.0% 📈</li>
+        <li>June 10: 96.5% ➡️</li>
+        <li>June 11: 78.6% 📉</li>
+        <li>June 12: <span style="color: #dc3545;"><strong>64.3% 📉📉</strong></span></li>
+    </ul>
+</div>
+
+<p><strong>Pattern Detected:</strong> Two tests are becoming flaky</p>
+<ul>
+    <li>✗ "Verify user can navigate to About page" — 40% pass rate (failing 2/5 times)</li>
+    <li>✗ "Verify user can logout" — 40% pass rate (failing 3/5 times)</li>
+</ul>
+
+---
+
+<h2>✅ PASSED TESTS (9/14)</h2>
+
+<table class="table">
+    <tr>
+        <th>Test Name</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>Verify All Items page displays products</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify product count on All Items page</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify that user can login with valid credentials</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify that user cannot login with invalid credentials</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify that user cannot login with empty credentials</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify that user cannot login with invalid username only</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify user can navigate to All Items</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify All Items page loads correctly after login</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+    <tr>
+        <td>Verify reset app state clears cart and settings</td>
+        <td class="passed">✅ PASS</td>
+    </tr>
+</table>
+
+---
+
+<h2>🔗 LINKS & RESOURCES</h2>
+
+<p>
+    <a href="http://localhost:4040/report/" class="button">View Full Allure Report</a>
+    <a href="file:///c:/Users/gnpur/git/gnp_javatst/Seleniumtest/target/allure-report/index.html" class="button">View Local Report</a>
+</p>
+
+<h3>Test Artifacts</h3>
+<ul>
+    <li><strong>Allure Results:</strong> <code>target/allure-results/</code> (14 test result JSON files)</li>
+    <li><strong>Maven Logs:</strong> Check CI/CD pipeline output</li>
+    <li><strong>Screenshots:</strong> In Allure dashboard (click each failed test)</li>
+    <li><strong>Full Stack Traces:</strong> See attached surefire-reports</li>
+</ul>
+
+---
+
+<h2>📋 NEXT STEPS</h2>
+
+<h3>For You (Developer)</h3>
+<ol>
+    <li><strong>Immediate (next 1 hour):</strong>
+        <ul>
+            <li>Review cart module changes from last 24 hours</li>
+            <li>Check git history: <code>git log --oneline src/main/java/Cart/ -5</code></li>
+            <li>Run local smoke tests to reproduce failures</li>
+        </ul>
+    </li>
+    <li><strong>Short-term (next 4 hours):</strong>
+        <ul>
+            <li>Fix cart add/remove/badge logic</li>
+            <li>Fix logout redirect configuration</li>
+            <li>Update pom.xml with Chrome DevTools v149</li>
+        </ul>
+    </li>
+    <li><strong>Verification:</strong>
+        <ul>
+            <li>Re-run smoke tests: <code>mvn -D"suiteXmlFile=testng-smoke.xml" clean test</code></li>
+            <li>Verify pass rate returns to >90%</li>
+        </ul>
+    </li>
+</ol>
+
+<h3>For QA Team</h3>
+<ul>
+    <li>Track trend of flaky tests in dashboard</li>
+    <li>Prepare detailed bug reports for cart failures</li>
+    <li>Document repro steps for navigation issues</li>
+</ul>
+
+---
+
+<div class="footer">
+    <p><strong>Report Details</strong></p>
+    <ul>
+        <li>Report ID: report-20260612-214133</li>
+        <li>Execution ID: exec-20260612-214040</li>
+        <li>Agent: Report Analyzer v1.0</li>
+        <li>Generated by: n8n Workflow 2 (Multi-Channel Notifications)</li>
+    </ul>
+    <p><strong>All test automation reports and alerts are sent directly to:</strong> gnpuranik479@gmail.com</p>
+    <p>This email was automatically generated by the Test Automation Framework. Do not reply to this email.</p>
+    <p><em>Next scheduled run:</em> June 13, 2026 at 8:00 AM (Daily Smoke Tests)</p>
+</div>
+
+</body>
+</html>
+
+---
+
+[END OF HTML EMAIL BODY]
+
+---
+
+**EMAIL ATTACHMENTS:**
+1. allure-report-20260612-214133.html (Full interactive Allure dashboard)
+2. failed-tests-screenshots.zip (Browser automation screenshots)
+3. maven-surefire-report.xml (Detailed test execution logs)
+4. test-metrics-30day-trend.csv (Historical data)
