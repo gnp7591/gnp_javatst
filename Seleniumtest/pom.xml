@@ -148,8 +148,11 @@
         <version>3.3.2</version>
         <configuration>
           <filesets>
+            <!-- CORRECT — separate <fileset> per directory -->
             <fileset>
               <directory>${project.build.directory}/allure-results</directory>
+            </fileset>
+            <fileset>
               <directory>${project.build.directory}/allure-report</directory>
             </fileset>
           </filesets>
