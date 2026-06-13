@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="API_Tests_Suite">
+    <!-- this name shows in Allure Suites -->
+    <listeners>
+        <listener class-name="Base.AllureReportListener"/>  <!-- single source of truth -->
+    </listeners>
+    <test name="JSONPlaceholder API Tests">
+        <classes>
+            <class name="apiTests.tests.PostsApiTests"/>
+        </classes>
+    </test>
+</suite>

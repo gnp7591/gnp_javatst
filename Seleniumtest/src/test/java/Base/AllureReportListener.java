@@ -10,7 +10,7 @@ import java.io.File;
  * Custom TestNG Listener to automatically generate and open Allure reports
  * after test suite execution completes.
  */
-public class AllureReportListener implements ISuiteListener {
+public class AllureReportListener extends AllureTestNg implements ISuiteListener {
 
     private static final String ALLURE_RESULTS_DIR = "target/allure-results";
     private static final String ALLURE_REPORT_DIR = "target/allure-report";
